@@ -58,7 +58,7 @@ const ProjectItem = ({
     <Text fontSize="lg" fontWeight={"semibold"}>
       {title}
     </Text>
-    <Text>{description}</Text>
+    <Text h='full'>{description}</Text>
     <Flex mt="1">
       <Link as={NextLink} href={githubLink} target='_blank'>
         <HStack>
