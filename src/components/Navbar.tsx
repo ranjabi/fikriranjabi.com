@@ -1,5 +1,4 @@
 import { Container, Flex, Link, Text } from "@chakra-ui/react";
-import React from "react";
 import NextLink from "next/link";
 
 interface NavbarItem {
@@ -14,11 +13,7 @@ const NavbarItems: NavbarItem[] = [
   },
   {
     label: "Projects",
-    path: "/projects",
-  },
-  {
-    label: "Docs",
-    path: "/",
+    path: "#projects",
   },
 ];
 
@@ -33,9 +28,11 @@ const NavbarItem = ({ label, path }: NavbarItem) => {
     >
       <Text
         px={4}
-				py={4}
+				py={3}
+        color='blackAlpha.600'
         _hover={{
-          bgColor: "gray.300",
+          color: 'black',
+          fontWeight: 'semibold',
         }}
       >
         {label}
@@ -46,7 +43,7 @@ const NavbarItem = ({ label, path }: NavbarItem) => {
 
 const Navbar = ({}) => {
   return (
-    <Flex bgColor="gray.100">
+    <Flex borderBottom='1px' borderColor='black'>
       <Container maxW='container.lg'>
         <Flex>
           {NavbarItems.map(({ label, path }, index) => (
