@@ -1,4 +1,7 @@
+import { Flex } from "@chakra-ui/react";
 import Head from "next/head";
+import Hero from "../components/Hero";
+import Projects from "../components/Projects";
 
 export default function Home() {
   return (
@@ -8,9 +11,10 @@ export default function Home() {
         <meta name="description" content="Fikri Ranjabi Personal Website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <main>
-        <p>hola!</p>
-      </main>
+      <Flex flexDirection={"column"}>
+        <Hero />
+        <Projects />
+      </Flex>
     </>
   );
 }
