@@ -43,7 +43,7 @@ const NavbarItem = ({ label, path }: NavbarItem) => {
 
 const Navbar = ({}) => {
   return (
-    <Flex borderBottom='1px' borderColor='black'>
+    <Flex borderBottom='1px' borderColor='blackAlpha.700'>
       <Container maxW='container.lg'>
         <Flex>
           {NavbarItems.map(({ label, path }, index) => (
