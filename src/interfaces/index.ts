@@ -5,3 +5,7 @@ export interface ProjectItemProps {
   githubLink: string;
   demoLink: string;
 }
+
+export interface ProjectsProps {
+  projects: ProjectItemProps[];
+}

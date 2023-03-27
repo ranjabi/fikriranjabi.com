@@ -18,18 +18,20 @@ const Hero = ({}) => {
   const variants = {
     visible: {
       opacity: 1,
-      transition: {},
     },
     hidden: {
       opacity: 0,
-      transition: {},
     },
   };
 
   return (
-    <>
-      <Flex flexDirection={"column"} py={[0, 4, 8]} mb="4">
-        <Flex flexDirection={isLineBreak ? 'column' : 'row'}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <Flex py={[0, 4, 8]} mb="4">
+        <Flex flexDirection={isLineBreak ? "column" : "row"}>
           <Text
             fontSize={["4xl", "5xl"]}
             fontWeight={"semibold"}
@@ -45,7 +47,11 @@ const Hero = ({}) => {
               variants={variants}
               key={position}
             >
-              <Text fontSize={["4xl", "5xl"]} color="black" ml={isLineBreak ? 0 : 4}>
+              <Text
+                fontSize={["4xl", "5xl"]}
+                color="black"
+                ml={isLineBreak ? 0 : 4}
+              >
                 {dynamicText[position]}
               </Text>
             </motion.div>
@@ -53,7 +59,7 @@ const Hero = ({}) => {
         </Flex>
       </Flex>
       <Divider />
-    </>
+    </motion.div>
   );
 };
 
