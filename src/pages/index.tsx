@@ -1,9 +1,21 @@
+import { ProjectsProps } from "@/interfaces";
 import { Flex } from "@chakra-ui/react";
 import Head from "next/head";
 import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 
-export default function Home() {
+export async function getStaticProps() {
+  const res = await fetch("http://localhost:3000/api/projects");
+  const data = await res.json();
+
+  return {
+    props: {
+      projects: data.data,
+    },
+  };
+}
+
+export default function Home({ projects }: ProjectsProps) {
   return (
     <>
       <Head>
@@ -13,7 +25,7 @@ export default function Home() {
       </Head>
       <Flex flexDirection={"column"}>
         <Hero />
-        <Projects />
+        <Projects projects={projects} />
       </Flex>
     </>
   );
