@@ -5,7 +5,7 @@ import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/projects");
+  const res = await fetch("https://www.fikriranjabi.com/api/projects");
   const data = await res.json();
 
   return {
