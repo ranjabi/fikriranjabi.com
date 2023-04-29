@@ -13,7 +13,7 @@ const NavbarItems: NavbarItem[] = [
   },
   {
     label: "Projects",
-    path: "#projects",
+    path: "/projects",
   },
 ];
 
