@@ -4,6 +4,7 @@ import { SiReact, SiNextdotjs, SiTypescript, SiGithub, SiExpress, SiMongodb } fr
 import { AiOutlineLink } from "react-icons/ai";
 import { ProjectItemProps } from "@/interfaces";
 import {FaNodeJs} from "react-icons/fa";
+import { Image } from "@chakra-ui/react";
 
 interface StackIconsProps {
   [key: string]: {
@@ -42,6 +43,7 @@ const stackIcons: StackIconsProps = {
 const ProjectItem = ({
   title,
   description,
+  image,
   stack,
   githubLink,
   demoLink,
@@ -59,7 +61,15 @@ const ProjectItem = ({
       {title}
     </Text>
     <Text h='full'>{description}</Text>
-    <Flex mt="1">
+    {image && <Image
+      mt={2}
+      border="1px"
+      borderColor={"blackAlpha.100"}
+      objectFit="cover"
+      src={image}
+      alt="Dan Abramov"
+    />}
+    <Flex mt="2">
       <Link as={NextLink} href={githubLink} target='_blank'>
         <HStack>
           <Icon as={SiGithub} />
@@ -92,7 +102,7 @@ const ProjectItem = ({
       )}
     </Flex>
     <Divider mt="2" />
-    <Flex mt="3">
+    <Flex mt="2">
       {stack.map((stackItem, index) => (
         <Icon as={stackIcons[stackItem.toString()].icon} key={index} mr="2" />
       ))}
