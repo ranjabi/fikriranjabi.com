@@ -4,17 +4,6 @@ import Head from "next/head";
 import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 
-export async function getStaticProps() {
-  const res = await fetch("https://www.fikriranjabi.com/api/projects");
-  const data = await res.json();
-
-  return {
-    props: {
-      projects: data.data,
-    },
-  };
-}
-
 export default function Home({ projects }: ProjectsProps) {
   return (
     <>
@@ -25,7 +14,7 @@ export default function Home({ projects }: ProjectsProps) {
       </Head>
       <Flex flexDirection={"column"}>
         <Hero />
-        <Projects projects={projects} />
+        <Projects />
       </Flex>
     </>
   );

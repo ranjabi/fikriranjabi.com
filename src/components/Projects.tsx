@@ -2,8 +2,24 @@ import { ProjectItemProps, ProjectsProps } from "@/interfaces";
 import { Flex, SimpleGrid, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import ProjectItem from "./ProjectItem";
+import { useEffect, useState } from "react";
 
-const Projects = ({ projects }: ProjectsProps) => {
+const Projects = ({}) => {
+  const [projects, setProjects] = useState<ProjectItemProps[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("/api/projects");
+      const data = await res.json();
+      setProjects(data.data);
+    };
+    try {
+      fetchData();
+    } catch (err) {
+      console.error(err);
+    }
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
