@@ -28,8 +28,7 @@ const NavbarItem = ({ label, path }: NavbarItem) => {
     >
       <Text
         px={4}
-				py={3}
-        color='blackAlpha.600'
+        py={3}
         _hover={{
           color: 'black',
           fontWeight: 'semibold',
@@ -43,9 +42,9 @@ const NavbarItem = ({ label, path }: NavbarItem) => {
 
 const Navbar = ({}) => {
   return (
-    <Flex borderBottom='1px' borderColor='blackAlpha.700'>
+    <Flex borderBottom='1px' borderColor='gray.200'>
       <Container maxW='container.lg'>
-        <Flex>
+        <Flex mx={-4}>
           {NavbarItems.map(({ label, path }, index) => (
             <NavbarItem key={index} label={label} path={path} />
           ))}
