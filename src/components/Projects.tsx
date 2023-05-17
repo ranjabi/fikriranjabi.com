@@ -1,25 +1,9 @@
-import { ProjectItemProps, ProjectsProps } from "@/interfaces";
+import { ProjectItemProps } from "@/interfaces";
 import { Flex, SimpleGrid, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import ProjectItem from "./ProjectItem";
-import { useEffect, useState } from "react";
 
-const Projects = ({}) => {
-  const [projects, setProjects] = useState<ProjectItemProps[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/api/projects");
-      const data = await res.json();
-      setProjects(data.data);
-    };
-    try {
-      fetchData();
-    } catch (err) {
-      console.error(err);
-    }
-  }, []);
-
+const Projects = ({ projects }: { projects: ProjectItemProps[] }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -30,16 +14,11 @@ const Projects = ({}) => {
         <Text fontSize="2xl" mt="3">
           Projects
         </Text>
-
-        {projects?.length > 0 ? (
-          <SimpleGrid columns={[1, null, 2, null, 3]} spacing="4" mt="4">
-            {projects.map((project, index) => (
-              <ProjectItem key={index} {...project} />
-            ))}
-          </SimpleGrid>
-        ) : (
-          <Text align={"center"}>Loading...</Text>
-        )}
+        <SimpleGrid columns={[1, null, 2, null, 3]} spacing="4" mt="4">
+          {projects.map((project, index) => (
+            <ProjectItem key={index} {...project} />
+          ))}
+        </SimpleGrid>
       </Flex>
     </motion.div>
   );

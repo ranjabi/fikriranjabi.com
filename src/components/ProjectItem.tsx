@@ -1,6 +1,6 @@
 import { Flex, Text, Link, Icon, HStack, Divider } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { SiReact, SiNextdotjs, SiTypescript, SiGithub, SiExpress, SiMongodb } from "react-icons/si";
+import { SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiExpress, SiMongodb } from "react-icons/si";
 import { AiOutlineLink } from "react-icons/ai";
 import { ProjectItemProps } from "@/interfaces";
 import {FaNodeJs} from "react-icons/fa";
@@ -38,76 +38,81 @@ const stackIcons: StackIconsProps = {
     icon: SiTypescript,
     alt: "TypeScript",
   },
+  JavaScript: {
+    icon: SiJavascript,
+    alt: "JavaScript",
+  },
 };
 
 const ProjectItem = ({
   title,
   description,
-  image,
+  thumbnail,
   stack,
-  githubLink,
-  demoLink,
-}: ProjectItemProps) => (
-  <Flex
-    flexDirection={"column"}
-    border="1px"
-    borderColor={"blackAlpha.500"}
-    px="4"
-    py="3"
-    mt="0"
-    borderRadius={"lg"}
-  >
-    <Text fontSize="lg" fontWeight={"semibold"}>
-      {title}
-    </Text>
-    <Text h='full'>{description}</Text>
-    {image && <Image
-      mt={2}
+  github,
+  demo,
+}: ProjectItemProps) => {
+  const parsedStack = stack ? JSON.parse(stack) : null;
+
+  return (
+    <Flex
+      flexDirection={"column"}
       border="1px"
-      borderColor={"blackAlpha.100"}
-      objectFit="cover"
-      src={image}
-      alt="Dan Abramov"
-    />}
-    <Flex mt="2">
-      <Link as={NextLink} href={githubLink} target='_blank'>
-        <HStack>
-          <Icon as={SiGithub} />
+      borderColor={"gray.300"}
+      px="4"
+      py="3"
+      mt="0"
+      borderRadius={"lg"}
+    >
+      <Text fontSize="lg" fontWeight={"semibold"}>
+        {title}
+      </Text>
+      <Text h="full">{description}</Text>
+      {thumbnail && (
+        <Image
+          mt={2}
+          border="1px"
+          borderColor={"gray.100"}
+          objectFit="cover"
+          src={thumbnail}
+          alt="Dan Abramov"
+        />
+      )}
+      <Flex mt="2">
+        <Link
+          as={NextLink}
+          href={`/projects/${title.toLowerCase().replace(/\s/g, "-")}`}
+          _hover={{
+            textDecoration: "none",
+          }}
+        >
           <Text
-            textDecoration={"underline"}
-            mr="2"
-            color="blackAlpha.600"
-            _hover={{ textDecoration: "none", color: "black" }}
+            _hover={{
+              color: "black",
+              fontWeight: "semibold",
+              textDecoration: "underline",
+            }}
           >
-            Github
+            See More →
           </Text>
-        </HStack>
-      </Link>
-      {demoLink && (
-        <>
-          <Text mx="2">-</Text>
-          <Link as={NextLink} href={demoLink} target='_blank'>
-            <HStack>
-              <Icon as={AiOutlineLink} />
-              <Text
-                textDecoration={"underline"}
-                color="blackAlpha.600"
-                _hover={{ textDecoration: "none", color: "black" }}
-              >
-                Preview
-              </Text>
-            </HStack>
-          </Link>
-        </>
+        </Link>
+      </Flex>
+      <Divider mt="2" />
+      {stack && (
+        <Flex mt="3">
+          {parsedStack.map((stackItem, index) => {
+            return (
+              <Icon
+                as={stackIcons[stackItem.toString()]?.icon}
+                key={index}
+                mr="2"
+              />
+            );
+          })}
+        </Flex>
       )}
     </Flex>
-    <Divider mt="2" />
-    <Flex mt="2">
-      {stack.map((stackItem, index) => (
-        <Icon as={stackIcons[stackItem.toString()].icon} key={index} mr="2" />
-      ))}
-    </Flex>
-  </Flex>
-);
+  );
+};
 
 export default ProjectItem;

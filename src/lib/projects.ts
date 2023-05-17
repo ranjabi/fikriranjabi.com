@@ -24,10 +24,10 @@ export function getSortedProjectsData() {
 
   return allPostsData.sort((a, b) => {
     // @ts-ignore
-    if (a.date < b.date) {
-      return 1;
-    } else {
+    if (a.title < b.title) {
       return -1;
+    } else {
+      return 1;
     }
   });
 }

@@ -1,8 +1,19 @@
 import { ProjectsProps } from "@/interfaces";
+import { getSortedProjectsData } from "@/lib/projects";
 import { Flex } from "@chakra-ui/react";
 import Head from "next/head";
 import Hero from "../components/Hero";
 import Projects from "../components/Projects";
+
+export async function getStaticProps() {
+  const projects = await getSortedProjectsData();
+
+  return {
+    props: {
+      projects,
+    },
+  };
+}
 
 export default function Home({ projects }: ProjectsProps) {
   return (
@@ -14,7 +25,7 @@ export default function Home({ projects }: ProjectsProps) {
       </Head>
       <Flex flexDirection={"column"}>
         <Hero />
-        <Projects />
+        <Projects projects={projects} />
       </Flex>
     </>
   );
