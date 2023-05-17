@@ -31,9 +31,6 @@ const Project = ({ projectData }: { projectData: Project }) => {
       </Head>
       <Flex flexDirection={"column"}>
         <Text fontSize="2xl">{projectData.title}</Text>
-        <Box mt="1">
-          <Date dateString={projectData.date} />
-        </Box>
         <div
           className={styles.content}
           dangerouslySetInnerHTML={{ __html: projectData.contentHtml }}
