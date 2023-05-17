@@ -11,10 +11,10 @@ const Projects = ({ projects }: { projects: ProjectItemProps[] }) => {
       transition={{ duration: 1 }}
     >
       <Flex id="#projects" flexDirection={"column"}>
-        <Text fontSize="2xl" mt="3">
+        <Text fontSize="3xl" mt="3">
           Projects
         </Text>
-        <SimpleGrid columns={[1, null, 2, null, 3]} spacing="4" mt="6">
+        <SimpleGrid columns={[1, null, 2, null, 3]} spacing="4" mt="5">
           {projects.map((project, index) => (
             <ProjectItem key={index} {...project} />
           ))}
