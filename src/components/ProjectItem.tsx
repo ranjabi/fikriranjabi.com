@@ -1,11 +1,9 @@
 import { Flex, Text, Link, Icon, HStack, Divider } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiExpress, SiMongodb } from "react-icons/si";
-import { AiOutlineLink } from "react-icons/ai";
 import { ProjectItemProps } from "@/interfaces";
-import {FaNodeJs} from "react-icons/fa";
+import {FaNodeJs, FaPhp} from "react-icons/fa";
 import { Image } from "@chakra-ui/react";
-
 interface StackIconsProps {
   [key: string]: {
     icon: any;
@@ -42,6 +40,10 @@ const stackIcons: StackIconsProps = {
     icon: SiJavascript,
     alt: "JavaScript",
   },
+  PHP: {
+    icon: FaPhp,
+    alt: "PHP",
+  }
 };
 
 const ProjectItem = ({
@@ -67,7 +69,7 @@ const ProjectItem = ({
       <Text fontSize="lg" fontWeight={"semibold"}>
         {title}
       </Text>
-      <Text h="full">{description}</Text>
+      <Text h="full" mt='2'>{description}</Text>
       {thumbnail && (
         <Image
           mt={2}
