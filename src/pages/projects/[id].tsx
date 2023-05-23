@@ -25,18 +25,18 @@ export async function getStaticProps({ params }: { params: { id: string } }) {
 
 const Project = ({ projectData }: { projectData: Project }) => {
   return (
-    <>
+    <Flex justifyContent={'center'}>
       <Head>
         <title>{projectData.title}</title>
       </Head>
-      <Flex flexDirection={"column"}>
+      <Flex flexDirection={"column"} w='container.sm'>
         <Text fontSize="2xl">{projectData.title}</Text>
         <div
           className={styles.content}
           dangerouslySetInnerHTML={{ __html: projectData.contentHtml }}
         />
       </Flex>
-    </>
+    </Flex>
   );
 };
 
