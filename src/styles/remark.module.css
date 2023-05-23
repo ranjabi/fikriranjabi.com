@@ -8,5 +8,9 @@
 }
 
 .content ul {
-    padding-left: 40px
+    padding-left: 40px;
+}
+
+.content img {
+    border: 1px solid #EDF2F7;
 }
