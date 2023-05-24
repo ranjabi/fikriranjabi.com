@@ -25,41 +25,34 @@ const Hero = ({}) => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
-      <Flex py={[0, 4, 8]} mb="4">
-        <Flex flexDirection={isLineBreak ? "column" : "row"}>
-          <Text
-            fontSize={["4xl", "5xl"]}
-            fontWeight={"semibold"}
-            color="blackAlpha.400"
+    <Flex py={[0, 4, 8]} mb="4">
+      <Flex flexDirection={isLineBreak ? "column" : "row"}>
+        <Text
+          fontSize={["4xl", "5xl"]}
+          fontWeight={"semibold"}
+          color="blackAlpha.400"
+        >
+          Hello, I'm
+        </Text>
+        <AnimatePresence initial={false} mode="wait">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={variants}
+            key={position}
           >
-            Hello, I'm
-          </Text>
-          <AnimatePresence initial={false} mode="wait">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              variants={variants}
-              key={position}
+            <Text
+              fontSize={["4xl", "5xl"]}
+              color="black"
+              ml={isLineBreak ? 0 : 4}
             >
-              <Text
-                fontSize={["4xl", "5xl"]}
-                color="black"
-                ml={isLineBreak ? 0 : 4}
-              >
-                {dynamicText[position]}
-              </Text>
-            </motion.div>
-          </AnimatePresence>
-        </Flex>
+              {dynamicText[position]}
+            </Text>
+          </motion.div>
+        </AnimatePresence>
       </Flex>
-      <Divider />
-    </motion.div>
+    </Flex>
   );
 };
 

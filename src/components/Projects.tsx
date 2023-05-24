@@ -5,22 +5,16 @@ import ProjectItem from "./ProjectItem";
 
 const Projects = ({ projects }: { projects: ProjectItemProps[] }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
-      <Flex id="#projects" flexDirection={"column"}>
-        <Text fontSize="3xl" mt="3">
-          Projects
-        </Text>
-        <SimpleGrid columns={[1, null, 2, null, 3]} spacing="4" mt="5">
-          {projects.map((project, index) => (
-            <ProjectItem key={index} {...project} />
-          ))}
-        </SimpleGrid>
-      </Flex>
-    </motion.div>
+    <Flex id="#projects" flexDirection={"column"} mt={8}>
+      <Text fontSize="4xl">
+        Projects
+      </Text>
+      <SimpleGrid columns={[1, null, 2, null, 3]} spacing="4" mt="4">
+        {projects.map((project, index) => (
+          <ProjectItem key={index} {...project} />
+        ))}
+      </SimpleGrid>
+    </Flex>
   );
 };
 
