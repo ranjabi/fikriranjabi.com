@@ -99,20 +99,6 @@ const ProjectItem = ({
           </Text>
         </Link>
       </Flex>
-      <Divider mt="2" />
-      {stack && (
-        <Flex mt="3">
-          {parsedStack.map((stackItem, index) => {
-            return (
-              <Icon
-                as={stackIcons[stackItem.toString()]?.icon}
-                key={index}
-                mr="2"
-              />
-            );
-          })}
-        </Flex>
-      )}
     </Flex>
   );
 };
