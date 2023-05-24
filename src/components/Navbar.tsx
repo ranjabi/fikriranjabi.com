@@ -8,11 +8,15 @@ interface NavbarItem {
 
 const NavbarItems: NavbarItem[] = [
   {
-    label: "Home",
+    label: "HOME",
     path: "/",
   },
   {
-    label: "Projects",
+    label: "SKILLS",
+    path: "#skills",
+  },
+  {
+    label: "PROJECTS",
     path: "#projects",
   },
 ];
