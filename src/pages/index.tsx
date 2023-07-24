@@ -1,7 +1,5 @@
 import { ProjectsProps } from "@/interfaces";
 import { getSortedProjectsData } from "@/lib/projects";
-import { Flex, Text } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import Head from "next/head";
 import Hero from "../components/Hero";
 import Projects from "../components/Projects";
@@ -43,53 +41,35 @@ export default function Home({ projects }: ProjectsProps) {
         <meta name="description" content="Fikri Ranjabi Personal Website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <Flex flexDirection={"column"}>
+        <div className="flex flex-col">
           <Hero />
-          <Flex id="#projects" flexDirection={"column"}>
-            <Flex id="#skills" flexDir="column">
-              <Text fontSize="4xl" mt={2}>
+          <div className="flex flex-col" id="#projects">
+            <div className="flex flex-col" id="#skills">
+              <p className="text-4xl mt-4">
                 My Skills
-              </Text>
-              <Flex
-                flexDir={["column", null, "row"]}
-                justifyContent={"space-between"}
-                mt={[2]}
+              </p>
+              <div className="flex flex-col md:flex-row justify-between sm:mt-2"
               >
-                <Text lineHeight={1.8} mr={[null, null, 4]}>
-                  With two years of learning frontend web development, I've
+                <p className="leading-[1.8rem] lg:mr-4 mt-4">
+                  With two years of learning frontend web development, I&apos;ve
                   gained an understanding to build a production ready website
                   application with the importance of reusability and
                   scalability.
-                </Text>
-                <Flex
-                  wrap="wrap"
-                  justifyContent={["flex-start", null, "flex-end"]}
-                  mt={[4, null, 0]}
+                </p>
+                <div className="flex flex-wrap justify-start md:justify-end mt-4 lg:mt-0"
                 >
                   {skills.map((skill, index) => (
-                    <Flex
-                      justifyContent={"center"}
-                      key={index}
-                      bgColor="gray.100"
-                      px={2}
-                      py={1}
-                      m={1}
+                    <div key={index} className="justify-center bg-gray-100 px-2 py-1 m-1"
                     >
                       {skill}
-                    </Flex>
+                    </div>
                   ))}
-                </Flex>
-              </Flex>
-            </Flex>
-          </Flex>
+                </div>
+              </div>
+            </div>
+          </div>
           <Projects projects={projects} />
-        </Flex>
-      </motion.div>
+        </div>
     </>
   );
 }

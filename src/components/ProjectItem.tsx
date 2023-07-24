@@ -1,9 +1,8 @@
-import { Flex, Text, Link, Icon, HStack, Divider } from "@chakra-ui/react";
-import NextLink from "next/link";
 import { SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiExpress, SiMongodb } from "react-icons/si";
 import { ProjectItemProps } from "@/interfaces";
 import {FaNodeJs, FaPhp} from "react-icons/fa";
-import { Image } from "@chakra-ui/react";
+import Link from "next/link";
+
 interface StackIconsProps {
   [key: string]: {
     icon: any;
@@ -57,49 +56,28 @@ const ProjectItem = ({
   const parsedStack = stack ? JSON.parse(stack) : null;
 
   return (
-    <Flex
-      flexDirection={"column"}
-      border="1px"
-      borderColor={"gray.300"}
-      px="4"
-      py="3"
-      mt="0"
-      borderRadius={"lg"}
+    <div className="flex flex-col border border-gray-300 px-4 py-3 mt-0 rounded-lg"
     >
-      <Text fontSize="lg" fontWeight={"semibold"}>
+      <div className="text-lg font-semibold">
         {title}
-      </Text>
-      <Text h="full" mt='2'>{description}</Text>
+      </div>
+      <div className="h-full mt-2">{description}</div>
       {thumbnail && (
-        <Image
-          mt={2}
-          border="1px"
-          borderColor={"gray.100"}
-          objectFit="cover"
+        <img className="mt-2 border boder-gray-100 object-cover" alt={title}
           src={thumbnail}
-          alt="Dan Abramov"
         />
       )}
-      <Flex mt="2">
+      <div className="flex mt-2">
         <Link
-          as={NextLink}
           href={`/projects/${title.toLowerCase().replace(/\s/g, "-")}`}
-          _hover={{
-            textDecoration: "none",
-          }}
         >
-          <Text
-            _hover={{
-              color: "black",
-              fontWeight: "semibold",
-              textDecoration: "underline",
-            }}
+          <div className="hover:text-black hover:font-semibold hover:underline"
           >
             See More →
-          </Text>
+          </div>
         </Link>
-      </Flex>
-    </Flex>
+      </div>
+    </div>
   );
 };
 

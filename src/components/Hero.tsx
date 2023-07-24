@@ -1,11 +1,8 @@
-import { Divider, Flex, Text, useBreakpointValue } from "@chakra-ui/react";
-import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const dynamicText = ["Fikri Ranjabi", "Software Engineer", "Comp Sci Student"];
 
-const Hero = ({}) => {
-  const isLineBreak = useBreakpointValue({ base: true, md: false });
+const Hero = () => {
   const [position, setPosition] = useState(0);
 
   useEffect(() => {
@@ -15,44 +12,19 @@ const Hero = ({}) => {
     return () => clearInterval(interval);
   }, [position]);
 
-  const variants = {
-    visible: {
-      opacity: 1,
-    },
-    hidden: {
-      opacity: 0,
-    },
-  };
-
   return (
-    <Flex py={[0, 4, 8]} mb="4">
-      <Flex flexDirection={isLineBreak ? "column" : "row"}>
-        <Text
-          fontSize={["4xl", "5xl"]}
-          fontWeight={"semibold"}
-          color="blackAlpha.400"
+    <div className="py-0 sm:py-4 md:py-8 mb-4">
+      <div className="flex flex-col md:flex-row">
+        <div className="text-4xl md:text-5xl font-semibold text-gray-400"
         >
-          Hello, I'm
-        </Text>
-        <AnimatePresence initial={false} mode="wait">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={variants}
-            key={position}
-          >
-            <Text
-              fontSize={["4xl", "5xl"]}
-              color="black"
-              ml={isLineBreak ? 0 : 4}
+          Hello, I&apos;m
+        </div>
+            <p className="text-4xl sm:text-5xl text-black ml-0 md:ml-4 mt-2 md:mt-0"
             >
-              {dynamicText[position]}
-            </Text>
-          </motion.div>
-        </AnimatePresence>
-      </Flex>
-    </Flex>
+              {dynamicText[0]}
+            </p>
+      </div>
+    </div>
   );
 };
 
