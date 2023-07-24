@@ -1,6 +1,13 @@
-import { SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiExpress, SiMongodb } from "react-icons/si";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiJavascript,
+  SiExpress,
+  SiMongodb,
+} from "react-icons/si";
 import { ProjectItemProps } from "@/interfaces";
-import {FaNodeJs, FaPhp} from "react-icons/fa";
+import { FaNodeJs, FaPhp } from "react-icons/fa";
 import Link from "next/link";
 
 interface StackIconsProps {
@@ -21,11 +28,11 @@ const stackIcons: StackIconsProps = {
   },
   ExpressJS: {
     icon: SiExpress,
-    alt: "ExpressJS"
+    alt: "ExpressJS",
   },
   MongoDB: {
     icon: SiMongodb,
-    alt: "MongoDB"
+    alt: "MongoDB",
   },
   NextJS: {
     icon: SiNextdotjs,
@@ -42,7 +49,7 @@ const stackIcons: StackIconsProps = {
   PHP: {
     icon: FaPhp,
     alt: "PHP",
-  }
+  },
 };
 
 const ProjectItem = ({
@@ -56,23 +63,19 @@ const ProjectItem = ({
   const parsedStack = stack ? JSON.parse(stack) : null;
 
   return (
-    <div className="flex flex-col border border-gray-300 px-4 py-3 mt-0 rounded-lg"
-    >
-      <div className="text-lg font-semibold">
-        {title}
-      </div>
+    <div className="flex flex-col border border-gray-300 px-4 py-3 mt-0 rounded-lg">
+      <div className="text-lg font-semibold">{title}</div>
       <div className="h-full mt-2">{description}</div>
       {thumbnail && (
-        <img className="mt-2 border boder-gray-100 object-cover" alt={title}
+        <img
+          className="mt-2 border boder-gray-100 object-cover"
+          alt={title}
           src={thumbnail}
         />
       )}
       <div className="flex mt-2">
-        <Link
-          href={`/projects/${title.toLowerCase().replace(/\s/g, "-")}`}
-        >
-          <div className="hover:text-black hover:font-semibold hover:underline"
-          >
+        <Link href={`/projects/${title.toLowerCase().replace(/\s/g, "-")}`}>
+          <div className="hover:text-black hover:font-semibold hover:underline">
             See More →
           </div>
         </Link>

@@ -25,9 +25,9 @@ const projectSchema = new Schema({
     type: String,
     required: true,
   },
-})
+});
 
-
-const Project = mongoose.models.Project || mongoose.model("Project", projectSchema);
+const Project =
+  mongoose.models.Project || mongoose.model("Project", projectSchema);
 
 export default Project;

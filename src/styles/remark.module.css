@@ -1,16 +1,16 @@
 .content {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .content p {
-    margin-block-start: 1rem;
-    margin-block-end: 1rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
 }
 
 .content ul {
-    padding-left: 40px;
+  padding-left: 40px;
 }
 
 .content img {
-    border: 1px solid #EDF2F7;
+  border: 1px solid #edf2f7;
 }
