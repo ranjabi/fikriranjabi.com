@@ -7,6 +7,20 @@ import Projects from "../components/Projects";
 export async function getStaticProps() {
   const projects = await getSortedProjectsData();
 
+  const projectOrder = [
+    'blog-list-dashboard',
+    'caridosen',
+    'binotify',
+    'akutenang',
+    'disease-detector',
+    'student-id-finder',
+    'piara-in'
+  ]
+  
+  projects.sort((a, b) => {
+    return projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id)
+  })
+
   return {
     props: {
       projects,
@@ -45,7 +59,7 @@ export default function Home({ projects }: ProjectsProps) {
         <Hero />
         <div className="flex flex-col" id="#projects">
           <div className="flex flex-col" id="#skills">
-            <p className="text-4xl mt-4">My Skills</p>
+            <p className="text-4xl mt-4 font-semibold"># My Skills</p>
             <div className="flex flex-col md:flex-row justify-between sm:mt-2">
               <p className="leading-[1.8rem] lg:mr-4 mt-4">
                 With two years of learning frontend web development, I&apos;ve
