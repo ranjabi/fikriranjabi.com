@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .project-header-title {
+        @apply relative text-2xl w-fit font-medium
+    }
+
+    .project-header-title::after {
+        @apply content-[''] bg-black  h-[2px] w-0 left-0 bottom-0 absolute duration-200
+    }
+
+    .project-header-title:hover::after {
+        @apply w-full
+    }
+}

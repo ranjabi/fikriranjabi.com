@@ -4,11 +4,11 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 
-const postsDirectory = path.join(process.cwd(), "contents/projects");
+const postsDirectory = path.join(process.cwd(), "documents/projects");
 
 export function getSortedProjectsData() {
   const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
+  const allProjectsData = fileNames.map((fileName) => {
     const id = fileName.replace(/\.md$/, "");
 
     const fullPath = path.join(postsDirectory, fileName);
@@ -22,7 +22,7 @@ export function getSortedProjectsData() {
     };
   });
 
-  return allPostsData.sort((a, b) => {
+  return allProjectsData.sort((a, b) => {
     // @ts-ignore
     if (a.title < b.title) {
       return -1;

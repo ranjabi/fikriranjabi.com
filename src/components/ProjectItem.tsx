@@ -5,10 +5,10 @@ import {
   SiJavascript,
   SiExpress,
   SiMongodb,
-} from "react-icons/si";
-import { ProjectItemProps } from "@/interfaces";
-import { FaNodeJs, FaPhp } from "react-icons/fa";
-import Link from "next/link";
+} from 'react-icons/si';
+import { ProjectItemProps } from '@/interfaces';
+import { FaNodeJs, FaPhp } from 'react-icons/fa';
+import Link from 'next/link';
 
 interface StackIconsProps {
   [key: string]: {
@@ -20,35 +20,35 @@ interface StackIconsProps {
 const stackIcons: StackIconsProps = {
   ReactJS: {
     icon: SiReact,
-    alt: "ReactJS",
+    alt: 'ReactJS',
   },
   NodeJS: {
     icon: FaNodeJs,
-    alt: "NodeJS",
+    alt: 'NodeJS',
   },
   ExpressJS: {
     icon: SiExpress,
-    alt: "ExpressJS",
+    alt: 'ExpressJS',
   },
   MongoDB: {
     icon: SiMongodb,
-    alt: "MongoDB",
+    alt: 'MongoDB',
   },
   NextJS: {
     icon: SiNextdotjs,
-    alt: "NextJS",
+    alt: 'NextJS',
   },
   TypeScript: {
     icon: SiTypescript,
-    alt: "TypeScript",
+    alt: 'TypeScript',
   },
   JavaScript: {
     icon: SiJavascript,
-    alt: "JavaScript",
+    alt: 'JavaScript',
   },
   PHP: {
     icon: FaPhp,
-    alt: "PHP",
+    alt: 'PHP',
   },
 };
 
@@ -63,8 +63,12 @@ const ProjectItem = ({
   const parsedStack = stack ? JSON.parse(stack) : null;
 
   return (
-    <div className="flex flex-col border border-gray-300 px-4 py-3 mt-0 rounded-lg">
-      <div className="text-lg font-semibold">{title}</div>
+    <div className="flex flex-col border border-gray-200 px-4 py-3 rounded-md">
+      <Link href={`/projects/${title.toLowerCase().replace(/\s/g, '-')}`}>
+        <div className="text-xl font-medium hover:text-black hover:font-semibold hover:underline">
+          {title}
+        </div>
+      </Link>
       <div className="h-full mt-2">{description}</div>
       {thumbnail && (
         <img
@@ -74,7 +78,7 @@ const ProjectItem = ({
         />
       )}
       <div className="flex mt-2">
-        <Link href={`/projects/${title.toLowerCase().replace(/\s/g, "-")}`}>
+        <Link href={`/projects/${title.toLowerCase().replace(/\s/g, '-')}`}>
           <div className="hover:text-black hover:font-semibold hover:underline">
             See More →
           </div>
