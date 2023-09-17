@@ -4,7 +4,7 @@ import ProjectItem from './ProjectItem';
 
 const Projects = ({ projects }: { projects: ProjectItemProps[] }) => {
   return (
-    <div className="flex flex-col mt-8" id="#projects">
+    <div className="flex flex-col mt-8" id="projects">
       <div className="text-4xl font-semibold"># Projects</div>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 mt-6">
         {projects.map((project, index) => {

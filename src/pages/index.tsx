@@ -57,13 +57,13 @@ export default function Home({ projects }: ProjectsProps) {
       </Head>
       <div className="flex flex-col">
         <Hero />
-        <div className="flex flex-col" id="#projects">
-          <div className="flex flex-col" id="#skills">
+          <div className="flex flex-col" id="skills">
             <p className="text-4xl mt-4 font-semibold"># My Skills</p>
             <div className="flex flex-col md:flex-row justify-between sm:mt-2">
               <p className="leading-[1.8rem] lg:mr-4 mt-4">
                 With two years of learning frontend web development, I&apos;ve
                 gained an understanding to build a production ready website
+                
                 application with the importance of reusability and scalability.
               </p>
               <div className="flex flex-wrap justify-start md:justify-end mt-4 lg:mt-0">
@@ -78,7 +78,6 @@ export default function Home({ projects }: ProjectsProps) {
               </div>
             </div>
           </div>
-        </div>
         <Projects projects={projects} />
       </div>
     </>
