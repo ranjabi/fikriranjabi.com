@@ -17,7 +17,7 @@ const NavbarItems: NavbarItemProps[] = [
 
 const Navbar = () => {
   return (
-    <div className="flex border border-b border-gray-200">
+    <div className="flex border border-b border-gray-300 sticky top-0 z-[99] bg-white">
       <div className="container mx-auto max-w-screen-lg">
         <div className="flex">
           {NavbarItems.map(({ label, path }, index) => (
