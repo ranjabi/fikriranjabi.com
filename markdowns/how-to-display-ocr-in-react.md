@@ -71,7 +71,7 @@ const result: {
             confidence: number;
         }[];
     }[];
-}[]
+}
 ```
 
 For the first step, let's create a HTML image component to display credit card image and add some styling to it. Don't forget to import the credit card image and put it into image source attribute.
@@ -109,7 +109,7 @@ export default App;
 The result will be like this:
 ![image](https://github.com/ranjabi/fikriranjabi.com/assets/71055612/de2f8f83-ebae-46cb-be69-c45350e0dcf3)
 
-Add canvas element and style it with absolute position, we also need to add relative position for canvas parent element. This is necessary to make sure that the canvas will be on the same position as the image.
+Add canvas element and style it with absolute position, we also need to add relative position for canvas parent element. This is necessary to make sure that the canvas will be on the same position as the image. Make sure the size of canvas element is same as the size of the image.
 
 ```
 import ocrCreditCard from './ocr-credit-card.jpeg'
@@ -179,26 +179,26 @@ useEffect(() => {
 }, [])
 ```
 
-Let's back to remember the structure of OCR result above. I stored the OCR result into a separate file named `ocrResult.js` and import it into our main component. To get the first bounding box on a word, we can access it by `result.lines[0].words.boundingPolygon`. Hence, to draw every words bounding box, we need to iterate on lines object. Our `useEffect` will be like this:
+Let's get back a bit and remember the structure of our OCR result. Store the OCR result into a separate file named `ocrResult.js` and import it into our main component. To get the first bounding box on a word, we can access it by using `result.lines[0].words.boundingPolygon`. Hence, to draw the bounding box for each word, we need to iterate on words object. Our `useEffect` will be like this:
 ```
-  useEffect(() => {
-    const context = canvasRef.current.getContext('2d')
+useEffect(() => {
+  const context = canvasRef.current.getContext('2d')
 
-    result.lines.forEach(line => {
-      line.words.forEach(word => {
-        const poly = word.boundingPolygon
-        context.strokeStyle = 'LawnGreen'
-        context.lineWidth = 2
-        context.beginPath();
-        context.moveTo(poly[0].x, poly[0].y);
-        context.lineTo(poly[1].x, poly[1].y);
-        context.lineTo(poly[2].x, poly[2].y);
-        context.lineTo(poly[3].x, poly[3].y);
-        context.closePath();
-        context.stroke();
-      })
+  result.lines.forEach(line => {
+    line.words.forEach(word => {
+      const poly = word.boundingPolygon
+      context.strokeStyle = 'LawnGreen'
+      context.lineWidth = 2
+      context.beginPath();
+      context.moveTo(poly[0].x, poly[0].y);
+      context.lineTo(poly[1].x, poly[1].y);
+      context.lineTo(poly[2].x, poly[2].y);
+      context.lineTo(poly[3].x, poly[3].y);
+      context.closePath();
+      context.stroke();
     })
-  }, [])
+  })
+}, [])
 ```
 - `context.strokeStyle = 'LawnGreen'` is used to color the stroke
 - `context.lineWidth = 2` is used to set the line width
