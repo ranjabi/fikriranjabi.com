@@ -7,8 +7,13 @@
   margin-block-end: 1rem;
 }
 
+.content a {
+  color: blue;
+}
+
 .content ul {
-  padding-left: 40px;
+  margin-left: 20px;
+  list-style-type: circle;
 }
 
 .content img {

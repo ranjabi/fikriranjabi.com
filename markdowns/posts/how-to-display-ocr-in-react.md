@@ -1,3 +1,10 @@
+---
+title: 'How to Display OCR in React'
+description: ''
+thumbnail: 'https://github.com/ranjabi/fikriranjabi.com/assets/71055612/7c434803-d5b9-40bb-856d-7f1556b70c16'
+date: '2024-03-12'
+---
+
 # Draft
 # How to Display OCR in React
 

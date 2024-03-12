@@ -5,3 +5,10 @@ export interface ProjectProps {
   github: string;
   contentHtml: string;
 }
+
+export interface PostProps {
+  id: string;
+  title: string;
+  date: string;
+  contentHtml: string;
+}
