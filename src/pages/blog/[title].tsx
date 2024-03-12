@@ -23,18 +23,18 @@ export async function getStaticProps({ params }: { params: { title: string } }) 
 
 const Post = ({ postsData }: { postsData: PostProps }) => {
   return (
-    <div className="flex justify-center">
+    <>
       <Head>
         <title>{postsData.title}</title>
       </Head>
-      <div className="flex flex-col w-screen-sm">
+      <div className="flex flex-col">
         <p className="text-2xl">{postsData.title}</p>
         <div
           className={styles.content}
           dangerouslySetInnerHTML={{ __html: postsData.contentHtml }}
         />
       </div>
-    </div>
+    </>
   );
 };
 
